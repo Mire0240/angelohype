@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angelo Hype</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: black;
+            color: #000;
+        }
+        .carousel img {
+            transition: opacity 1s ease-in-out;
+        }
+       
+        .bg-lime-800 {
+        background-color: #000; /* Lime 800 */
+        
+        }
+        .bg-lime-900 {
+            background-color: #000; /* Lime 900 */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="bg-lime-800 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <img src="images/AHype.png" width="300px" height="auto">
+            <nav class="space-x-4">
+                <a href="#about" class="text-white hover:text-red-500">About</a>
+                <a href="#organize" class="text-white hover:text-red-500">Portfolio</a>
+                <a href="#contact" class="text-white hover:text-red-500">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Carousel -->
+    <section class="relative overflow-hidden">
+        <div id="carousel" class="carousel relative h-screen">
+            <div class="absolute inset-0">
+                <img src="images/femenino/Foto 05-03-21, 11 37 50 p m.jpg" alt="Slide 1" class="carousel-slide absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000">
+                <img src="images/publicitaria/DSC06380.jpg" alt="Slide 2" class="carousel-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+                <img src="images/Masculino/Foto 01-30-25, 2 07 57 p m (3).jpg" alt="Slide 3" class="carousel-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+            </div>
+    
+            <!-- Overlay Content -->
+            <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center text-center text-white 
+            opacity-0 animate-fade-in">
+                <img src="Gifs/skullcross.gif" class="w-48 h-auto mb-4"> 
+                <div>  
+                    <img src="images/AHype.png" width="750px" height="auto">
+                    <p class="mt-4 text-lg">“Turning Moments into Timeless Art.”</p>
+                </div>
+            </div>
+
+            <!-- Tailwind Custom Animation -->
+            <style>
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .animate-fade-in {
+                animation: fadeIn 5s ease-out forwards;
+            }
+            </style>
+    
+            <!-- Navigation Buttons -->
+            <button id="prevSlide" class="absolute left-5 top-1/2 transform -translate-y-1/2 bg-black text-white p-2 rounded-full">
+                &#10094;
+            </button>
+            <button id="nextSlide" class="absolute right-5 top-1/2 transform -translate-y-1/2 bg-black text-white p-2 rounded-full">
+                &#10095;
+            </button>
+        </div>
+    </section>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let slides = document.querySelectorAll(".carousel-slide");
+            let currentSlide = 0;
+            let totalSlides = slides.length;
+    
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.style.opacity = i === index ? "1" : "0";
+                });
+            }
+    
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
+    
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                showSlide(currentSlide);
+            }
+    
+            document.getElementById("nextSlide").addEventListener("click", nextSlide);
+            document.getElementById("prevSlide").addEventListener("click", prevSlide);
+    
+            // Auto slide every 5 seconds
+            setInterval(nextSlide, 5000);
+        });
+    </script>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-black flex flex-col items-center justify-center opacity-0 animate-fade-in">
+        <div class="container mx-auto px-6 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold text-white">About Me</h2>
+            <p class="mt-4 text-gray-300">
+                Hi, I’m Angel Gabriel Cruz, an aspiring photographer with a passion for 
+                capturing the world through vibrant colors, striking compositions, and artistic designs. 
+                Photography, to me, is more than just taking pictures—it’s about telling a story, evoking emotions, 
+                and exploring the beauty in every frame.
+    
+                I find inspiration in everyday moments, blending light, texture, and perspective to create images that resonate. 
+                Whether it’s portraits, landscapes, or abstract compositions, my goal is to craft visually compelling art that leaves 
+                a lasting impression.
+    
+                Join me on this journey as I continue to explore, learn, and share my vision—one photograph at a time.
+            </p>
+        </div>
+        <div class="flex justify-center mt-6">
+            <img src="Gifs/bat.gif" class="w-32">
+        </div>
+    </section>
+    
+    <!-- Tailwind Custom Animation -->
+    <style>
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    .animate-fade-in {
+        animation: fadeIn 9s ease-out forwards;
+    }
+    </style>
+    <!-- JavaScript for Fade-In on Scroll -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const aboutSection = document.getElementById("about");
+    
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        aboutSection.classList.add("opacity-100");
+                        observer.unobserve(aboutSection); // Stops observing after animation runs
+                    }
+                });
+            },
+            { threshold: 0.2 } // Trigger when 20% of the section is visible
+        );
+    
+        observer.observe(aboutSection);
+    });
+    </script>
+    <!-- Portfolio Section -->
+
+    <section id="organize" class="gallery-section">
+        <h2 class="text-3xl font-bold text-center text-white">Porfolio</h2>
+        <style>
+            .gallery-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: #000;
+                padding: 40px 0;
+            }
+    
+            .carousel-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80%;
+                max-width: 1200px;
+                position: relative;
+                padding-top: 40px;
+            }
+    
+            .carousel-track {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+            
+            }
+    
+            .carousel-item {
+                flex: 0 0 280px;
+                height: 600px;
+                background-size: cover;
+                background-position: center;
+                border-radius: 20px;
+                position: relative;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+    
+            /* Hover effect */
+            .carousel-item:hover {
+                transform: scale(1.05);
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            }
+    
+            .overlay-text {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                max-width: 80%;
+                font-size: 24px;
+                font-weight: bold;
+            }
+        </style>
+        
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <a href="Fashion.html" class="carousel-item"> 
+                    <div class="carousel-item" style="background-image: url('images/fashion/Foto 03-21-23, 4 31 56 p m.jpg');">
+                        <div class="overlay-text">Fashion<br> A collection of fashion photography.</div>
+                    </div>
+                </a>
+                <a href="Femenine.html" class="carousel-item"> 
+                    <div class="carousel-item" style="background-image: url('images/femenino/Foto 01-01-17, 12 00 00 a m.jpg');">
+                        <div class="overlay-text">Feminine<br> A collection of the beauty of femininity.</div>
+                    </div>
+                </a>
+                <a href="Masculine.html" class="carousel-item"> 
+                <div class="carousel-item" style="background-image: url('images/Masculino/Foto 05-15-23, 11 29 21 a m.jpg');">
+                    <div class="overlay-text">Masculine <br>A collection of the beauty of masculinity.<br></div>
+                </div>
+                </a>
+                <a href="Publicity.html" class="carousel-item"> 
+                <div class="carousel-item" style="background-image: url('images/cantinero editt 2/DSC02019.jpg');">
+                    <div class="overlay-text">Publicity / PSA <br>A collection of publicity and PSA photography.</div>
+                </div>
+                </a>
+            </div>
+        </div> 
+    </section> 
+
+    <!-- Contact Section -->
+   
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-black text-white py-10">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            
+            <!-- Logo / Brand -->
+            <div>
+                <h2 class="text-2xl font-bold text-white">Angel Gabriel Photography</h2>
+                <p class="mt-2 text-sm text-gray-400">“Turning Moments into Timeless Art.”</p>
+            </div>
+    
+            <!-- Navigation Links -->
+            <div>
+                <h3 class="text-lg font-semibold text-white">Quick Links</h3>
+                <ul class="mt-4 space-y-2">
+                    <li><a href="#about" class="hover:text-red-800 transition duration-300">About</a></li>
+                    <li><a href="#organize" class="hover:text-red-800 transition duration-300">Portfolio</a></li>
+                </ul>
+            </div>
+    
+            <!-- Social Media -->
+            <div>
+                <h3 class="text-lg font-semibold text-white">Follow Me</h3>
+                <div class="mt-4 flex justify-center md:justify-start space-x-4">
+                    <a href="https://www.instagram.com/angelohype_/" class="hover:text-red-500 transition duration-300">
+                        <i class="fab fa-instagram text-3xl"></i> <!-- Larger icon -->
+                    </a>
+                </div>
+            </div>
+    
+        </div>
+    
+        <!-- Divider -->
+        <div class="border-t border-red-800 mt-8"></div>
+    
+        <!-- Copyright -->
+        <div class="text-center text-sm text-white mt-4">
+            &copy; 2025 Angel Gabriel Photography. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        module.exports = {
+    theme: {
+        extend: {
+            colors: {
+                lime: require('tailwindcss/colors').lime,
+            },
+        },
+    },
+    plugins: [],
+};
+        const slides = document.querySelectorAll("#carousel img");
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.opacity = i === index ? "1" : "0";
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        setInterval(nextSlide, 3000);
+    </script>
+</body>
+</html>
