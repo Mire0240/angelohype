@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!--Document name: Angelo Hype Portfolio 
+Created by Mireilys Moreno Gierbolini
+Last Edited by: 06/10/25   -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -85,6 +88,32 @@
                 font-size: 24px;
                 font-weight: bold;
             }
+            /*Tailwind Fade in animation css */
+              @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .animate-fade-in {
+                animation: fadeIn 5s ease-out forwards;
+            }  
+
+              @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+            .animate-fade-in {
+                animation: fadeIn 9s ease-out forwards;
+            }
     </style>
      <!--Page Styles End-->
 
@@ -117,8 +146,54 @@
             // Auto slide every 5 seconds
             setInterval(nextSlide, 5000);
         });
+            // JavaScript for Fade-In on Scroll
+
+          document.addEventListener("DOMContentLoaded", function () {
+        const aboutSection = document.getElementById("about");
+    
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        aboutSection.classList.add("opacity-100");
+                        observer.unobserve(aboutSection); // Stops observing after animation runs
+                    }
+                });
+            },
+            { threshold: 0.2 } // Trigger when 20% of the section is visible
+        );
+    
+        observer.observe(aboutSection);
+    });
+    // Tailwind CSS configuration for custom colors
+      module.exports = {
+    theme: {
+        extend: {
+            colors: {
+                lime: require('tailwindcss/colors').lime,
+            },
+        },
+    },
+    plugins: [],
+};
+        const slides = document.querySelectorAll("#carousel img");
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.opacity = i === index ? "1" : "0";
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        setInterval(nextSlide, 3000);
+
     </script>
-        <!--Page Script End-->
+     <!--Page Script End-->
 </head>
 <body>
     <!-- Header Start -->
@@ -151,24 +226,6 @@
                     <p class="mt-4 text-lg">“Turning Moments into Timeless Art.”</p>
                 </div>
             </div>
-
-            <!-- Tailwind Custom Animation -->
-            <style>
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            .animate-fade-in {
-                animation: fadeIn 5s ease-out forwards;
-            }
-            </style>
-    
             <!-- Navigation Buttons -->
             <button id="prevSlide" class="absolute left-5 top-1/2 transform -translate-y-1/2 bg-black text-white p-2 rounded-full">
                 &#10094;
@@ -180,64 +237,26 @@
     </section>
  <!-- Top Section Carousel End-->
 
-    <!-- About Section -->
+ <!-- About Section Start -->
     <section id="about" class="py-20 bg-black flex flex-col items-center justify-center opacity-0 animate-fade-in">
         <div class="container mx-auto px-6 max-w-3xl text-center">
-            <h2 class="text-3xl font-bold text-white">About Me</h2>
+            <h2 class="text-3xl font-bold text-white">Sobre Mí</h2>
             <p class="mt-4 text-gray-300">
-                Hi, I’m Angel Gabriel Cruz, an aspiring photographer with a passion for 
-                capturing the world through vibrant colors, striking compositions, and artistic designs. 
-                Photography, to me, is more than just taking pictures—it’s about telling a story, evoking emotions, 
-                and exploring the beauty in every frame.
-    
-                I find inspiration in everyday moments, blending light, texture, and perspective to create images that resonate. 
-                Whether it’s portraits, landscapes, or abstract compositions, my goal is to craft visually compelling art that leaves 
-                a lasting impression.
-    
-                Join me on this journey as I continue to explore, learn, and share my vision—one photograph at a time.
+            Hola, soy Ángel Gabriel Cruz, un fotógrafo en formación con una pasión por capturar el mundo a través de colores vibrantes, composiciones impactantes y diseños artísticos.
+            Para mí, la fotografía es más que tomar fotos: es contar una historia, evocar emociones y explorar la belleza en cada encuadre.
+
+            Encuentro inspiración en los momentos cotidianos, combinando luz, textura y perspectiva para crear imágenes que conecten.
+            Ya sea retratos, paisajes o composiciones abstractas, mi objetivo es crear arte visualmente impactante que deje una impresión duradera.
+
+            Acompáñame en este viaje mientras continúo explorando, aprendiendo y compartiendo mi visión—una fotografía a la vez.
             </p>
         </div>
         <div class="flex justify-center mt-6">
             <img src="assets/Gifs/bat copy.gif" class="w-32">
         </div>
     </section>
-    
-    <!-- Tailwind Custom Animation -->
-    <style>
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-    .animate-fade-in {
-        animation: fadeIn 9s ease-out forwards;
-    }
-    </style>
-    <!-- JavaScript for Fade-In on Scroll -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const aboutSection = document.getElementById("about");
-    
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        aboutSection.classList.add("opacity-100");
-                        observer.unobserve(aboutSection); // Stops observing after animation runs
-                    }
-                });
-            },
-            { threshold: 0.2 } // Trigger when 20% of the section is visible
-        );
-    
-        observer.observe(aboutSection);
-    });
-    </script>
-    <!-- Portfolio Section -->
-
+   
+    <!-- Portfolio Section Start -->
     <section id="organize" class="gallery-section">
         <h2 class="text-3xl font-bold text-center text-white">Porfolio</h2>
      
@@ -267,12 +286,9 @@
             </div>
         </div> 
     </section> 
-
-    <!-- Contact Section -->
-   
-    </section>
+     <!-- Portfolio Section End -->
     
-    <!-- Footer -->
+    <!-- Footer Section Start-->
     <footer class="bg-black text-white py-10">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
             
@@ -311,35 +327,7 @@
             &copy; 2025 Angel Gabriel Photography. All rights reserved.
         </div>
     </footer>
-    <script>
-        module.exports = {
-    theme: {
-        extend: {
-            colors: {
-                lime: require('tailwindcss/colors').lime,
-            },
-        },
-    },
-    plugins: [],
-};
-        const slides = document.querySelectorAll("#carousel img");
-        let currentIndex = 0;
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.style.opacity = i === index ? "1" : "0";
-            });
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
-        }
-
-        setInterval(nextSlide, 3000);
-    </script>
+    <!-- Footer Section End-->
 </body>
-
-
 
 </html>
