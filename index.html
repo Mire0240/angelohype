@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--Page Styles Start-->
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -24,10 +25,103 @@
         .bg-lime-900 {
             background-color: #000; /* Lime 900 */
         }
+
+        /* Custom styles for the carousel */
+            .gallery-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: #000;
+                padding: 40px 0;
+            }
+    
+            .carousel-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80%;
+                max-width: 1200px;
+                position: relative;
+                padding-top: 40px;
+            }
+    
+            .carousel-track {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+            
+            }
+    
+            .carousel-item {
+                flex: 0 0 280px;
+                height: 600px;
+                background-size: cover;
+                background-position: center;
+                border-radius: 20px;
+                position: relative;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+    
+            /* Hover effect */
+            .carousel-item:hover {
+                transform: scale(1.05);
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            }
+    
+            .overlay-text {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                max-width: 80%;
+                font-size: 24px;
+                font-weight: bold;
+            }
     </style>
+     <!--Page Styles End-->
+
+      <!--Page Script Start-->
+     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let slides = document.querySelectorAll(".carousel-slide");
+            let currentSlide = 0;
+            let totalSlides = slides.length;
+    
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.style.opacity = i === index ? "1" : "0";
+                });
+            }
+    
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
+    
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                showSlide(currentSlide);
+            }
+    
+            document.getElementById("nextSlide").addEventListener("click", nextSlide);
+            document.getElementById("prevSlide").addEventListener("click", prevSlide);
+    
+            // Auto slide every 5 seconds
+            setInterval(nextSlide, 5000);
+        });
+    </script>
+        <!--Page Script End-->
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Header Start -->
     <header class="bg-lime-800 shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <img src="assets/AHype.png" width="300px" height="auto">
@@ -38,8 +132,8 @@
             </nav>
         </div>
     </header>
-
-    <!-- Hero Section with Carousel -->
+    <!-- Header Start -->
+    <!-- Top Section Carousel Start-->
     <section class="relative overflow-hidden">
         <div id="carousel" class="carousel relative h-screen">
             <div class="absolute inset-0">
@@ -84,36 +178,7 @@
             </button>
         </div>
     </section>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let slides = document.querySelectorAll(".carousel-slide");
-            let currentSlide = 0;
-            let totalSlides = slides.length;
-    
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                    slide.style.opacity = i === index ? "1" : "0";
-                });
-            }
-    
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                showSlide(currentSlide);
-            }
-    
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                showSlide(currentSlide);
-            }
-    
-            document.getElementById("nextSlide").addEventListener("click", nextSlide);
-            document.getElementById("prevSlide").addEventListener("click", prevSlide);
-    
-            // Auto slide every 5 seconds
-            setInterval(nextSlide, 5000);
-        });
-    </script>
+ <!-- Top Section Carousel End-->
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-black flex flex-col items-center justify-center opacity-0 animate-fade-in">
@@ -175,66 +240,7 @@
 
     <section id="organize" class="gallery-section">
         <h2 class="text-3xl font-bold text-center text-white">Porfolio</h2>
-        <style>
-            .gallery-section {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                background-color: #000;
-                padding: 40px 0;
-            }
-    
-            .carousel-container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 80%;
-                max-width: 1200px;
-                position: relative;
-                padding-top: 40px;
-            }
-    
-            .carousel-track {
-                display: flex;
-                gap: 20px;
-                justify-content: center;
-            
-            }
-    
-            .carousel-item {
-                flex: 0 0 280px;
-                height: 600px;
-                background-size: cover;
-                background-position: center;
-                border-radius: 20px;
-                position: relative;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 20px;
-                color: white;
-                font-size: 18px;
-                font-weight: bold;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-    
-            /* Hover effect */
-            .carousel-item:hover {
-                transform: scale(1.05);
-                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-            }
-    
-            .overlay-text {
-                position: absolute;
-                top: 20px;
-                left: 20px;
-                max-width: 80%;
-                font-size: 24px;
-                font-weight: bold;
-            }
-        </style>
+     
         
         <div class="carousel-container">
             <div class="carousel-track">
@@ -333,4 +339,7 @@
         setInterval(nextSlide, 3000);
     </script>
 </body>
+
+
+
 </html>
