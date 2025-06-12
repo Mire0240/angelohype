@@ -52,32 +52,62 @@ Last Edited by: 06/10/25   -->
             pointer-events: auto;
         }
     </style>
+    <!--Script for Burger Menu-->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menu = document.getElementById('nav-menu');
+    const openBtn = document.getElementById('menu-toggle');
+    const closeBtn = document.getElementById('menu-close');
+
+    openBtn.addEventListener('click', () => {
+      menu.classList.remove('translate-x-full');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      menu.classList.add('translate-x-full');
+    });
+  });
+</script>
 </head>
 <body class="bg-black text-white">
-
- <!--Header Section Start-->
+<!--Header Section Start-->
 <header class="bg-black p-6 shadow-md fixed w-full top-0 z-50">
-    <div class="container mx-auto flex justify-between items-center">
-        <img src="assets/AHype.png" width="300px" height="auto">
+  <div class="container mx-auto flex justify-between items-center">
+    <img src="assets/AHype.png" width="200px" height="auto">
 
-        <nav class="flex space-x-6 items-center text-gray-300">
-            <a href="index.html" class="flex items-center hover:text-red-500">
-                <i class="fas fa-home mr-2 text-red-500"></i> Home
-            </a>
-            <a href="./Fashion.html" class="flex items-center hover:text-red-500">
-                <i class="fas fa-tshirt mr-2 text-red-500"></i> Moda
-            </a>
-            <a href="./Femenine.html" class="flex items-center hover:text-red-500">
-                <i class="fas fa-female mr-2 text-red-500"></i> Femenina
-            </a>
-            <a href="./Masculine.html" class="flex items-center hover:text-red-500">
-                <i class="fas fa-male mr-2 text-red-500"></i> Masculina
-            </a>
-            <a href="./Publicity.html" class="flex items-center hover:text-red-500">
-                <i class="fas fa-bullhorn mr-2 text-red-500"></i> Publicidad
-            </a>
-        </nav>
-    </div>
+    <!-- Burger Button -->
+    <button id="menu-toggle" class="text-white text-3xl md:hidden focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Off-canvas Menu -->
+    <nav id="nav-menu"
+         class="fixed top-0 right-0 h-full w-64 bg-black text-gray-300 transform translate-x-full transition-transform duration-300 ease-in-out z-50 md:relative md:translate-x-0 md:flex md:items-center md:space-x-6 md:w-auto md:h-auto md:bg-transparent">
+      <div class="flex flex-col p-6 space-y-6 md:flex-row md:space-y-0 md:space-x-6 md:p-0">
+
+        <!-- Close Button (mobile only) -->
+        <button id="menu-close" class="text-white text-2xl self-end mb-4 md:hidden">
+          &times;
+        </button>
+
+        <a href="index.html" class="flex items-center hover:text-red-500">
+          <i class="fas fa-home mr-2 text-red-500"></i> Home
+        </a>
+        <a href="./Fashion.html" class="flex items-center hover:text-red-500">
+          <i class="fas fa-tshirt mr-2 text-red-500"></i> Moda
+        </a>
+        <a href="./Femenine.html" class="flex items-center hover:text-red-500">
+          <i class="fas fa-female mr-2 text-red-500"></i> Femenina
+        </a>
+        <a href="./Masculine.html" class="flex items-center hover:text-red-500">
+          <i class="fas fa-male mr-2 text-red-500"></i> Masculina
+        </a>
+        <a href="./Publicity.html" class="flex items-center hover:text-red-500">
+          <i class="fas fa-bullhorn mr-2 text-red-500"></i> Publicidad
+        </a>
+      </div>
+    </nav>
+  </div>
 </header>
 <!--Header Section End-->
     <!-- Portfolio Section Start-->
