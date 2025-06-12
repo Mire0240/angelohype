@@ -102,6 +102,22 @@ Last Edited by: 06/10/25   -->
             .animate-fade-in {
                 animation: fadeIn 5s ease-out forwards;
             }  
+            @media (max-width: 768px) {
+            .carousel-track {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            .carousel-item {
+                min-width: 250px;
+                flex-shrink: 0;
+                scroll-snap-align: start;
+            }
+            }
     </style>
      <!--Page Styles End-->
 
@@ -290,35 +306,41 @@ Last Edited by: 06/10/25   -->
     </section>
    
     <!-- Portfolio Section Start -->
-    <section id="organize" class="gallery-section">
-        <h2 class="text-3xl font-bold text-center text-white">Porfolio</h2>
-     
-        
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <a href="Fashion.html" class="carousel-item"> 
-                    <div class="carousel-item" style="background-image: url('assets/fashion/Foto 03-21-23, 4 31 56 p m.jpg');">
-                        <div class="overlay-text">Fashion<br> A collection of fashion photography.</div>
-                    </div>
-                </a>
-                <a href="Femenine.html" class="carousel-item"> 
-                    <div class="carousel-item" style="background-image: url('assets/femenine/Foto 01-01-17, 12 00 00 a m.jpg');">
-                        <div class="overlay-text">Feminine<br> A collection of the beauty of femininity.</div>
-                    </div>
-                </a>
-                <a href="Masculine.html" class="carousel-item"> 
-                <div class="carousel-item" style="background-image: url('assets/masculine/Foto 01-30-25, 2 07 57 p m (3) (1).jpg');">
-                    <div class="overlay-text">Masculine <br>A collection of the beauty of masculinity.<br></div>
+    <section id="organize" class="gallery-section py-10 px-4 bg-black">
+        <h2 class="text-3xl font-bold text-center text-white mb-6">Porfolio</h2>
+
+        <div class="carousel-container overflow-x-auto">
+            <div class="carousel-track flex space-x-4 md:space-x-6">
+            <a href="Fashion.html" class="carousel-item min-w-[250px] h-[300px] bg-cover bg-center rounded-lg shadow-lg flex items-end text-white"
+                style="background-image: url('assets/fashion/Foto 03-21-23, 4 31 56 p m.jpg');">
+                <div class="overlay-text bg-black bg-opacity-50 p-4 w-full text-sm text-center">
+                Moda<br>
                 </div>
-                </a>
-                <a href="Publicity.html" class="carousel-item"> 
-                <div class="carousel-item" style="background-image: url('assets/publicitaria/DSC01776.jpg');">
-                    <div class="overlay-text">Publicity / PSA <br>A collection of publicity and PSA photography.</div>
+            </a>
+
+            <a href="Femenine.html" class="carousel-item min-w-[250px] h-[300px] bg-cover bg-center rounded-lg shadow-lg flex items-end text-white"
+                style="background-image: url('assets/femenine/Foto 01-01-17, 12 00 00 a m.jpg');">
+                <div class="overlay-text bg-black bg-opacity-50 p-4 w-full text-sm text-center">
+                Femenino<br>
                 </div>
-                </a>
+            </a>
+
+            <a href="Masculine.html" class="carousel-item min-w-[250px] h-[300px] bg-cover bg-center rounded-lg shadow-lg flex items-end text-white"
+                style="background-image: url('assets/masculine/Foto 01-30-25, 2 07 57 p m (3) (1).jpg');">
+                <div class="overlay-text bg-black bg-opacity-50 p-4 w-full text-sm text-center">
+                Masculino<br>
+                </div>
+            </a>
+
+            <a href="Publicity.html" class="carousel-item min-w-[250px] h-[300px] bg-cover bg-center rounded-lg shadow-lg flex items-end text-white"
+                style="background-image: url('assets/publicitaria/DSC01776.jpg');">
+                <div class="overlay-text bg-black bg-opacity-50 p-4 w-full text-sm text-center">
+                Publicidad<br>
+                </div>
+            </a>
             </div>
-        </div> 
-    </section> 
+        </div>
+     </section> 
      <!-- Portfolio Section End -->
 
     <!--Footer Start-->   
